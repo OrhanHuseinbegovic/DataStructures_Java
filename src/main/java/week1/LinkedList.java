@@ -75,13 +75,61 @@ public class LinkedList<Data> implements Iterable<Data> {
 
     /* Add an element to a linked list by index (0-index) */
     public void add(int index, Data data) {
-        // your code
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("ERROR");
+        }
 
+        Node<Data> newNode = new Node<>();
+        newNode.data = data;
+
+        if (index == 0) {
+            newNode.next = head;
+            head = newNode;
+            size++;
+            return;
+        }
+
+        Node<Data> current = head;
+
+        int i = 0;
+        while (current != null) {
+            if (i == index - 1) {
+                newNode.next = current.next;
+                current.next = newNode;
+                size++;
+                break;
+            }
+            current = current.next;
+            i++;
+        }
     }
 
     /* Delete an element from a linked list by index (0-index) */
     public void remove(int index) {
         // your code
+            if (index < 0 || index >= size) {
+                throw new IndexOutOfBoundsException("Index is out of bounds: " + index);
+            }
+
+            if (index == 0) {
+                head = head.next;
+                size--;
+                return;
+            }
+
+            Node<Data> current = head;
+            int i = 0;
+            while (current != null) {
+                if (i == index - 1) {
+                    Node<Data> nextNode = current.next;
+                    current.next = nextNode.next;
+                    nextNode.next = null; // Disconnecting the node from the list
+                    size--;
+                    break;
+                }
+                current = current.next;
+                i++;
+            }
     }
 
     public void reverse() {
