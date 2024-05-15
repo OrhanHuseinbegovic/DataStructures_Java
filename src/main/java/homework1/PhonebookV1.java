@@ -10,9 +10,14 @@ public class PhonebookV1 {
         System.out.println("Loading the entries...");
         Entry[] entries = FileUtils.readFile("C:\\Users\\ohuse\\IdeaProjects\\DataStructures\\src\\main\\java\\homework1\\sorted_phonebook_data.csv");
         //Entry[] entries = FileUtils.readFile("C:\\Users\\ohuse\\IdeaProjects\\DataStructures\\src\\main\\java\\homework1\\raw_phonebook_data.csv");
-        //System.out.println("Sorting the entries...");
+        System.out.println("Sorting the entries...");
         //MergeSort.sort(entries);
-        //System.out.println("Saving the sorted file...");
+        //MergeSort.sort(entries, new Entry.StreetAddressComparator());
+        //MergeSort.sort(entries, new Entry.CityComparator());
+        //MergeSort.sort(entries, new Entry.PostcodeComparator());
+        //MergeSort.sort(entries, new Entry.CountryComparator());
+        //MergeSort.sort(entries, new Entry.PhoneNumberComparator());
+        System.out.println("Saving the sorted file...");
         //FileUtils.writeToFile(entries, "C:\\Users\\ohuse\\IdeaProjects\\DataStructures\\src\\main\\java\\homework1\\sorted_phonebook_data.csv");
 
 

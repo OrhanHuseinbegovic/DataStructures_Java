@@ -1,5 +1,7 @@
 package homework1;
 
+import java.util.Comparator;
+
 public class Entry implements Comparable<Entry> {
     // implement the relevant data attributes
     private String name;
@@ -87,5 +89,39 @@ public class Entry implements Comparable<Entry> {
         return thisName.compareTo(otherName);
     }
 
+
+    public static class StreetAddressComparator implements Comparator<Entry> {
+        @Override
+        public int compare(Entry e1, Entry e2){
+            return e1.getStreetAddress().compareTo(e2.getStreetAddress());
+        }
+    }
+    public static class CityComparator implements Comparator<Entry> {
+        @Override
+        public int compare(Entry e1, Entry e2) {
+            return e1.getCity().compareTo(e2.getCity());
+        }
+    }
+
+    public static class PostcodeComparator implements Comparator<Entry> {
+        @Override
+        public int compare(Entry e1, Entry e2) {
+            return e1.getPostcode().compareTo(e2.getPostcode());
+        }
+    }
+
+    public static class CountryComparator implements Comparator<Entry> {
+        @Override
+        public int compare(Entry e1, Entry e2) {
+            return e1.getCountry().compareTo(e2.getCountry());
+        }
+    }
+
+    public static class PhoneNumberComparator implements Comparator<Entry> {
+        @Override
+        public int compare(Entry e1, Entry e2) {
+            return e1.getPhoneNumber().compareTo(e2.getPhoneNumber());
+        }
+    }
 
 }

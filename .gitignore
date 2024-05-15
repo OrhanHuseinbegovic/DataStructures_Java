@@ -36,3 +36,13 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Large Files ###
+src/main/java/homework1/raw_phonebook_data.csv
+src/main/java/homework1/sorted_phonebook_data.csv
+src/main/java/homework1/sorted_phonebook_data_by_city.csv
+src/main/java/homework1/sorted_phonebook_data_by_country.csv
+src/main/java/homework1/sorted_phonebook_data_by_phone_number.csv
+src/main/java/homework1/sorted_phonebook_data_by_postcode.csv
+src/main/java/homework1/sorted_phonebook_data_by_street_address.csv
+src/main/java/week3/labTask/IP2LOCATION.csv
