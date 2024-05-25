@@ -15,6 +15,14 @@ public class Scheduler {
         int processIndex = 0;
         int n = processes.size();
 
+        //Here for the Optional part 4, we make array for finish times and an array for original burst times
+        //We fill the original burst times array immediately
+        int[] finishTimes = new int[n];
+        int[] originalBurstTimes = new int[n];
+        for (int i = 0; i < n; i++) {
+            originalBurstTimes[i] = processes.get(i).getBurstTime();
+        }
+
 
         while (processIndex < n || !queue.isEmpty()) {
 
@@ -31,6 +39,9 @@ public class Scheduler {
                 nextProcess.setBurstTime(nextProcess.getBurstTime()-1);
                 if(nextProcess.getBurstTime()>0){
                     queue.addProcess(nextProcess);
+                }
+                else {
+                    finishTimes[processes.indexOf(nextProcess)] = currentTime;
                 }
             }
             else{
@@ -61,7 +72,17 @@ public class Scheduler {
 
          */
 
+        //Here we calculate the total waiting time
+        int totalWaitingTime = 0;
+        for (int i = 0; i < n; i++) {
+            //Formula is: finish time of the process - burst ime - arrival time
+            int waitingTime = finishTimes[i] - originalBurstTimes[i] - processes.get(i).getArrivalTime();
+            totalWaitingTime += waitingTime;
+        }
+        double averageWaitingTime = (double) totalWaitingTime / n;
+
         System.out.println("Total time: "+currentTime);
+        System.out.println("Average waiting time: " + averageWaitingTime);
     }
 
     public static void main(String[] args) {
@@ -86,7 +107,7 @@ public class Scheduler {
         processes.add(new Process("P5", 10, 2, 5));
         */
 
-        /*
+
         processes.add(new Process("P1", 2, 1, 0));
         processes.add(new Process("P2", 6, 7, 1));
         processes.add(new Process("P3", 3, 3, 2));
@@ -94,13 +115,13 @@ public class Scheduler {
         processes.add(new Process("P5", 4, 5, 4));
         processes.add(new Process("P6", 10, 15, 5));
         processes.add(new Process("P7", 9, 8, 15));
-        */
 
 
+        /*
         processes.add(new Process("P1", 2, 4, 1));
         processes.add(new Process("P2", 1, 1, 2));
         processes.add(new Process("P3", 3, 2, 8));
-
+        */
 
 
         scheduleAndRun(processes);
