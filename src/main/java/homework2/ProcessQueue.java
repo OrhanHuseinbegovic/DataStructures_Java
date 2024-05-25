@@ -1,6 +1,5 @@
 package homework2;
 
-import java.beans.PropertyEditor;
 
 public class ProcessQueue {
     public Process[] pq = new Process[2];
